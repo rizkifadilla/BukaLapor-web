@@ -24,3 +24,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('auth/google', 'Auth\Socialite\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\Socialite\GoogleController@handleGoogleCallback');
