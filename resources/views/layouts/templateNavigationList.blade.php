@@ -11,4 +11,15 @@ menu biasa
 <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li> --}}
 @section('templateNavigationList')
 <li class="@yield('active')"><a href="#"><i class="ti-map-alt"></i> <span>Home</span></a></li>
+
+@if ( Auth::user()->role == 'Admin' )
+<li class="@yield('active')"><a href="admin/added-instance"><i class="ti-map-alt"></i> <span>Tambah Instansi</span></a></li>
+
+@elseif( Auth::user()->role == 'Instance' )
+<li class="@yield('active')"><a href="#"><i class="ti-map-alt"></i> <span>Instance</span></a></li>
+
+@elseif( Auth::user()->role == 'User' )
+<li class="@yield('active')"><a href="#"><i class="ti-map-alt"></i> <span>user</span></a></li>
+
+@endif
 @endsection

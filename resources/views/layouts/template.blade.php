@@ -40,7 +40,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/icon/logo.png" alt="logo"></a>
+                    <a href="index.html"><img src="{{url('img/logo.png')}}" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -103,7 +103,7 @@
                                     <div class="nofity-list">
                                         <a href="#" class="notify-item">
                                             <div class="notify-thumb">
-                                                <img src="assets/images/author/author-img1.jpg" alt="image">
+                                                <img src="{{url('assets/images/author/author-img1.jpg')}}" alt="image">
                                             </div>
                                             <div class="notify-text">
                                                 <p>Aglae Mayer</p>
@@ -130,8 +130,8 @@
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            <img class="avatar user-thumb" src="{{url('assets/images/author/avatar.png')}}" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }}<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#">Message</a>
                                 <a class="dropdown-item" href="#">Settings</a>
