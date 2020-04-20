@@ -19,7 +19,7 @@ menu biasa
         <li class="@yield('activeIntanceData')"><a href="{{ route('indexInstanceData') }}"><i class="ti-map-alt"></i> <span>Data Instansi</span></a></li>
 
     @elseif( Auth::user()->role == 'User' )
-        <li class="@yield('active')"><a href="#"><i class="ti-map-alt"></i> <span>Laporkan</span></a></li>
+        <li class="@yield('activeReportForm')"><a href="{{ route('indexReportForm') }}"><i class="ti-map-alt"></i> <span>Laporkan</span></a></li>
 
     @endif
 @endsection

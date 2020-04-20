@@ -63,6 +63,12 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
+        'public_fileLampiran'=>[
+            'driver'    => 'local',
+            'root'      => public_path().'/Upload/FileLampiran/',
+            'url'       => env('APP_URL').'/public',
+            'visibility'=> 'public',
+        ],
 
     ],
 
