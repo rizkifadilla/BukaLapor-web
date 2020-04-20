@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReportActionsTable extends Migration
+class CreateReportFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateReportActionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('report_actions', function (Blueprint $table) {
+        Schema::create('report_files', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_report');
-            $table->text('content');
+            $table->string('file');
             
             $table->foreign('id_report')->references('id')->on('reports')->onDelete('cascade');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
@@ -32,6 +32,6 @@ class CreateReportActionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('report_actions');
+        Schema::dropIfExists('report_files');
     }
 }

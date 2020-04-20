@@ -20,14 +20,16 @@ class CreateInstancesTable extends Migration
             $table->unsignedBigInteger('id_province');
             $table->unsignedBigInteger('id_district');
             $table->unsignedBigInteger('id_subdistrict');
+            $table->unsignedBigInteger('id_user');
             $table->string('name');
             $table->string('address');
 
-            $table->foreign('id_intance_type')->references('id')->on('instance_types');
-            $table->foreign('id_intance_service')->references('id')->on('instance_services');
+            $table->foreign('id_intance_type')->references('id')->on('instance_types')->onDelete('cascade');
+            $table->foreign('id_intance_service')->references('id')->on('instance_services')->onDelete('cascade');
             $table->foreign('id_province')->references('id')->on('m_zone_provinces');
             $table->foreign('id_district')->references('id')->on('m_zone_districts');
             $table->foreign('id_subdistrict')->references('id')->on('m_zone_subdistricts');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

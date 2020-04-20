@@ -23,9 +23,9 @@ class CreateReportsTable extends Migration
             $table->string('seen')->nullable();
             $table->string('status');
 
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_intance')->references('id')->on('instances');
-            $table->foreign('id_intance_units')->references('id')->on('instance_units');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_intance')->references('id')->on('instances')->onDelete('cascade');
+            $table->foreign('id_intance_units')->references('id')->on('instance_units')->onDelete('cascade');
             $table->timestamps();
         });
     }

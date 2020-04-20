@@ -19,8 +19,8 @@ class CreateReportCommentsTable extends Migration
             $table->unsignedBigInteger('id_report');
             $table->text('content');
             
-            $table->foreign('id_report')->references('id')->on('reports');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_report')->references('id')->on('reports')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

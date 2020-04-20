@@ -1,6 +1,6 @@
 @extends('layouts.template')
 @extends('layouts.templateNavigationList')
-@section('active')
+@section('activeAddInstance')
 active
 @endsection
 

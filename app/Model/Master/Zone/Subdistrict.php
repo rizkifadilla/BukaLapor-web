@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subdistrict extends Model
 {
-    protected $table = 'm_zones_subdistrict';
+    protected $table = 'm_zone_subdistricts';
     protected $fillable = ['m_zone_provinces_id','m_zone_districts_id','index', 'name'];
 
     public $timestamps = false;
