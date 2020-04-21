@@ -16,7 +16,7 @@ class UserController extends Controller
     public function report_form()
     {
         $categorys = InstanceService::all();
-        return view('user/reportForm', compact('categorys'));
+        return view('user/homeUser', compact('categorys'));
     }
     public function addedReportData(Request $request)
     {
@@ -29,17 +29,18 @@ class UserController extends Controller
         $report->status = 'Waiting';
         $report->save();
 
-        $file                           = $request->file('lampiran');
-        $fileeks                        = $file->getClientOriginalExtension();
-        $filename                       = Auth::user()->id."-".$report->id."_".rand(11111,99999).".".$fileeks;
-        Storage::disk('public_fileLampiran')->put($filename, File::get($file));
-        $file = new ReportFile;
-        $file->id_user = Auth::user()->id;
-        $file->id_report = $report->id;
-        $file->file = $filename;
-        $file->save();
-        return "success";
-
-        
+        if($request->file('lampiran') != null){
+            $file                           = $request->file('lampiran');
+            $fileeks                        = $file->getClientOriginalExtension();
+            $filename                       = Auth::user()->id."-".$report->id."_".rand(11111,99999).".".$fileeks;
+            Storage::disk('public_fileLampiran')->put($filename, File::get($file));
+            $file = new ReportFile;
+            $file->id_user = Auth::user()->id;
+            $file->id_report = $report->id;
+            $file->file = $filename;
+            $file->save();
+            return redirect('user/report-form');
+        }
+        return redirect('user/report-form');
     }
 }

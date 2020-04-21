@@ -17,19 +17,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('cekrole');
+Route::get('/homeUser', 'HomeController@indexUser')->name('homeUser');
 Route::get('district/{id}', 'HomeController@district')->name('district');
 Route::get('subDistrict/{id_province}/{id_district}', 'HomeController@subDistrict')->name('subDistrict');
 
 Route::prefix('admin')->group(function (){
     Route::get('added-instance','AdminController@added_instance')->name('indexAddedInstance');
     Route::post('addedInstance','AdminController@addedInstance')->name('addedInstance');
+    Route::get('report-verification','AdminController@report_verification')->name('indexReportVerification');
+    Route::get('report-details/{id}','AdminController@report_details')->name('reportDetails');
+    Route::get('accept/{id}','AdminController@accept')->name('accept');
+    Route::post('reject','AdminController@reject')->name('reject');
 });
 Route::prefix('instance')->group(function (){
     Route::get('instance-data','InstanceController@instance_data')->name('indexInstanceData');

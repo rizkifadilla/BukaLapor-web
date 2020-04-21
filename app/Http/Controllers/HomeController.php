@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Response;
-use App\Model\Master\Zone\District;
-use App\Model\Master\Zone\Subdistrict;
+use App\Model\Master\Zone\Province;
+use App\Model\InstanceType;
+use App\Model\InstanceService;
+use App\Model\Instance;
+use App\Model\Report;
+use App\Model\ReportFile;
+use Auth,Storage,File,Response;
 
 class HomeController extends Controller
 {

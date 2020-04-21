@@ -14,12 +14,13 @@ menu biasa
 
     @if ( Auth::user()->role == 'Admin' )
         <li class="@yield('activeAddInstance')"><a href="{{ route('indexAddedInstance') }}"><i class="ti-map-alt"></i> <span>Tambah Instansi</span></a></li>
+        <li class="@yield('activeReportVerification')"><a href="{{ route('indexReportVerification') }}"><i class="ti-map-alt"></i> <span>Verifikasi Laporan</span></a></li>
 
     @elseif( Auth::user()->role == 'Instance' )
         <li class="@yield('activeIntanceData')"><a href="{{ route('indexInstanceData') }}"><i class="ti-map-alt"></i> <span>Data Instansi</span></a></li>
 
-    @elseif( Auth::user()->role == 'User' )
-        <li class="@yield('activeReportForm')"><a href="{{ route('indexReportForm') }}"><i class="ti-map-alt"></i> <span>Laporkan</span></a></li>
+    {{-- @elseif( Auth::user()->role == 'User' )
+        <li class="@yield('activeReportForm')"><a href="{{ route('indexReportForm') }}"><i class="ti-map-alt"></i> <span>Laporkan</span></a></li> --}}
 
     @endif
 @endsection
