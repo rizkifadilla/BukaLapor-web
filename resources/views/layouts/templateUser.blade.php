@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/slicknav.min.css')}}">
     <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css"
+        media="all" />
     <!-- others css -->
     <link rel="stylesheet" href="{{asset('assets/css/typography.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/default-css.css')}}">
@@ -42,7 +43,9 @@
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="index.html" style="color: black;"><h4>BukaLapor</h4></a>
+                            <a href="{{ route('indexReportForm') }}" style="color: black;">
+                                <h4>BukaLapor</h4>
+                            </a>
                         </div>
                     </div>
                     <!-- profile info & task notification -->
@@ -56,7 +59,8 @@
                                         <span>2</span>
                                     </i>
                                     <div class="dropdown-menu bell-notify-box notify-box">
-                                        <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
+                                        <span class="notify-title">You have 3 new notifications <a href="#">view
+                                                all</a></span>
                                         <div class="nofity-list">
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
@@ -66,7 +70,8 @@
                                                 </div>
                                             </a>
                                             <a href="#" class="notify-item">
-                                                <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
+                                                <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i>
+                                                </div>
                                                 <div class="notify-text">
                                                     <p>New Commetns On Post</p>
                                                     <span>30 Seconds ago</span>
@@ -80,7 +85,8 @@
                                                 </div>
                                             </a>
                                             <a href="#" class="notify-item">
-                                                <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
+                                                <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i>
+                                                </div>
                                                 <div class="notify-text">
                                                     <p>New Commetns On Post</p>
                                                     <span>30 Seconds ago</span>
@@ -111,13 +117,16 @@
                                     </div>
                                 </li>
                                 <li class="dropdown">
-                                    <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span>3</span></i>
+                                    <i class="fa fa-envelope-o dropdown-toggle"
+                                        data-toggle="dropdown"><span>3</span></i>
                                     <div class="dropdown-menu notify-box nt-enveloper-box">
-                                        <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
+                                        <span class="notify-title">You have 3 new notifications <a href="#">view
+                                                all</a></span>
                                         <div class="nofity-list">
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb">
-                                                    <img src="{{url('assets/images/author/author-img1.jpg')}}" alt="image">
+                                                    <img src="{{url('assets/images/author/author-img1.jpg')}}"
+                                                        alt="image">
                                                 </div>
                                                 <div class="notify-text">
                                                     <p>Aglae Mayer</p>
@@ -127,7 +136,8 @@
                                             </a>
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb">
-                                                    <img src="{{url('assets/images/author/author-img2.jpg')}}" alt="image">
+                                                    <img src="{{url('assets/images/author/author-img2.jpg')}}"
+                                                        alt="image">
                                                 </div>
                                                 <div class="notify-text">
                                                     <p>Aglae Mayer</p>
@@ -137,7 +147,8 @@
                                             </a>
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb">
-                                                    <img src="{{url('assets/images/author/author-img3.jpg')}}" alt="image">
+                                                    <img src="{{url('assets/images/author/author-img3.jpg')}}"
+                                                        alt="image">
                                                 </div>
                                                 <div class="notify-text">
                                                     <p>Aglae Mayer</p>
@@ -147,7 +158,8 @@
                                             </a>
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb">
-                                                    <img src="{{url('assets/images/author/author-img4.jpg')}}" alt="image">
+                                                    <img src="{{url('assets/images/author/author-img4.jpg')}}"
+                                                        alt="image">
                                                 </div>
                                                 <div class="notify-text">
                                                     <p>Aglae Mayer</p>
@@ -157,7 +169,8 @@
                                             </a>
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb">
-                                                    <img src="{{url('assets/images/author/author-img2.jpg')}}" alt="image">
+                                                    <img src="{{url('assets/images/author/author-img2.jpg')}}"
+                                                        alt="image">
                                                 </div>
                                                 <div class="notify-text">
                                                     <p>Aglae Mayer</p>
@@ -167,7 +180,8 @@
                                             </a>
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb">
-                                                    <img src="{{url('assets/images/author/author-img1.jpg')}}" alt="image">
+                                                    <img src="{{url('assets/images/author/author-img1.jpg')}}"
+                                                        alt="image">
                                                 </div>
                                                 <div class="notify-text">
                                                     <p>Aglae Mayer</p>
@@ -177,7 +191,8 @@
                                             </a>
                                             <a href="#" class="notify-item">
                                                 <div class="notify-thumb">
-                                                    <img src="{{url('assets/images/author/author-img3.jpg')}}" alt="image">
+                                                    <img src="{{url('assets/images/author/author-img3.jpg')}}"
+                                                        alt="image">
                                                 </div>
                                                 <div class="notify-text">
                                                     <p>Aglae Mayer</p>
@@ -195,16 +210,19 @@
                         </div>
                         <div class="clearfix d-md-inline-block d-block">
                             <div class="user-profile m-0">
-                                <img class="avatar user-thumb" src="{{url('assets/images/author/avatar.png')}}" alt="avatar">
-                                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                                <img class="avatar user-thumb" src="{{url('assets/images/author/avatar.png')}}"
+                                    alt="avatar">
+                                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i
+                                        class="fa fa-angle-down"></i></h4>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="#">Message</a>
                                     <a class="dropdown-item" href="#">Settings</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">Log Out</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +269,8 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                </p>
             </div>
         </footer>
         <!-- footer area end-->

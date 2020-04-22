@@ -37,10 +37,14 @@ Route::prefix('admin')->group(function (){
 Route::prefix('instance')->group(function (){
     Route::get('instance-data','InstanceController@instance_data')->name('indexInstanceData');
     Route::post('added-instance-data', 'InstanceController@addedInstanceData')->name('addedInstanceData');
+    Route::get('report-data','InstanceController@report_data')->name('indexReportData');
+    Route::get('report-details-instance/{id}','InstanceController@report_details_instance')->name('reportDetailsInstance');
+    Route::post('response','InstanceController@response')->name('response');
 });
 Route::prefix('user')->group(function (){
     Route::get('report-form','UserController@report_form')->name('indexReportForm');
     Route::post('added-report-data', 'UserController@addedReportData')->name('addedReportData');
+    Route::get('my-report','UserController@my_report')->name('indexMyReport');
 });
 Route::get('auth/google', 'Auth\Socialite\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\Socialite\GoogleController@handleGoogleCallback');

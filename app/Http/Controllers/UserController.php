@@ -43,4 +43,11 @@ class UserController extends Controller
         }
         return redirect('user/report-form');
     }
+    public function my_report()
+    {
+        $allReports = Report::all();
+        $myReports = Report::where('id_user', Auth::user()->id)->get();
+
+        return view('user.myReport', compact('allReports','myReports'));
+    }
 }

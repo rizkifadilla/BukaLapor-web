@@ -21,7 +21,7 @@ class CreateReportTable extends Migration
             $table->string('title');
             $table->text('subtitle');
             $table->string('seen')->nullable();
-            $table->enum('status', array('Waiting', 'Verified', 'Not Verified'))->default('Waiting');
+            $table->enum('status', array('Waiting', 'Verified', 'Not Verified', 'Process', 'Done'))->default('Waiting');
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_intance')->references('id')->on('instances')->onDelete('cascade');
