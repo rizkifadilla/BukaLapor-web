@@ -40,11 +40,20 @@ Route::prefix('instance')->group(function (){
     Route::get('report-data','InstanceController@report_data')->name('indexReportData');
     Route::get('report-details-instance/{id}','InstanceController@report_details_instance')->name('reportDetailsInstance');
     Route::post('response','InstanceController@response')->name('response');
+    Route::get('delete-response/{id}/{id_report}','InstanceController@delete_response')->name('deleteResponse');
 });
 Route::prefix('user')->group(function (){
     Route::get('report-form','UserController@report_form')->name('indexReportForm');
     Route::post('added-report-data', 'UserController@addedReportData')->name('addedReportData');
     Route::get('my-report','UserController@my_report')->name('indexMyReport');
+    Route::get('report-details-user/{id}','UserController@report_detail_user')->name('indexReportDetailUser');
+    Route::post('added-report-comment', 'UserController@addedReportComment')->name('addedReportComment');
+    Route::get('done-report-user/{id}','UserController@done_report_user')->name('doneReportUser');
+    Route::get('delete-report/{id}','UserController@delete_report')->name('deleteReport');
+    Route::get('delete-comment/{id}/{id_report}','UserController@delete_comment')->name('deleteComment');
+    Route::post('response-user', 'UserController@response_user')->name('responseUser');
+    Route::get('delete-response-user/{id}/{id_report}','UserController@delete_response_user')->name('deleteResponseUser');
+
 });
 Route::get('auth/google', 'Auth\Socialite\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\Socialite\GoogleController@handleGoogleCallback');

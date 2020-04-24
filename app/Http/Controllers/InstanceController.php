@@ -7,10 +7,11 @@ use App\Model\Master\Zone\Province;
 use App\Model\InstanceType;
 use App\Model\InstanceService;
 use App\Model\Instance;
-use App\Model\ReportAction;
-use App\User;
 use App\Model\Report;
 use App\Model\ReportFile;
+use App\Model\ReportAction;
+use App\Model\ReportComment;
+use App\Model\ReportSupport;
 use Auth,Storage,File,DB;
 
 class InstanceController extends Controller
@@ -53,8 +54,9 @@ class InstanceController extends Controller
     {
         $report = Report::where('id', $id)->first();
         $files = ReportFile::where('id_report', $report->id)->get();
+        $actions = ReportAction::where('id_report', $id)->where('id_user', Auth::user()->id)->get();
 
-        return view('instance.reportDetails', compact('report','files'));
+        return view('instance.reportDetails', compact('report','files','actions'));
     }
     public function response(Request $request)
     {
@@ -69,6 +71,14 @@ class InstanceController extends Controller
               ->where('id', $id_report)
               ->update(['status' => "Process"]);
 
-        return redirect('instance/report-data');
+        return redirect()->route('reportDetailsInstance',[$id_report]);
+    }
+    public function delete_response($id, $id_report)
+    {
+        DB::table('report_actions')
+              ->where('id', $id)
+              ->delete();
+        
+        return redirect()->route('reportDetailsInstance',[$id_report]);
     }
 }

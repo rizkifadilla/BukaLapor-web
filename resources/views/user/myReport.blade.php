@@ -53,6 +53,7 @@ active
                             
                             <div class="tab-pane fade show" id="laporanku" role="tabpanel" aria-labelledby="laporanku-tab">
                                 @foreach ($myReports as $myReport)
+                            <a href="{{ route('indexReportDetailUser', $myReport->id) }}">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
@@ -71,6 +72,7 @@ active
                                 <hr>
                                 @endforeach
                             </div>
+                        </a>
                             {{-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
