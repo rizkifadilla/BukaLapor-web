@@ -32,17 +32,61 @@ active
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="tab-home">
                                 @foreach ($allReports as $allReport)
+
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img class="avatar user-thumb" src="{{url('assets/images/author/avatar.png')}}" alt="avatar">
+                                        <a href="{{ route('indexReportDetailUser', $allReport->id) }}">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img class="avatar user-thumb"
+                                                        src="{{url('assets/images/author/avatar.png')}}" alt="avatar">
+                                                </div>
+                                                <div class="col-md-11">
+                                                    <p><b>{{ \App\User::where('id', $allReport->id_user)->first()->username }}</b>
+                                                    </p>
+                                                    <p>{{ \App\Model\Instance::where('id', $allReport->id_instance)->first()->name }}
+                                                    </p>
+                                                    <p class="mt-2 mb-1"><b>{{ $allReport->title }}
+                                                        @if ($allReport->status == "Done")
+                                                        <span class="badge badge-pill badge-success">Selesai</span>
+                                                        @endif
+                                                    </b></p>
+                                                    <p>{{ $allReport->subtitle }}</p>
+                                                </div>
                                             </div>
-                                            <div class="col-md-11">
-                                                <p><b>{{ \App\User::where('id', $allReport->id_user)->first()->username }}</b></p>
-                                                <p>{{ \App\Model\Instance::where('id', $allReport->id_instance)->first()->name }}</p>
-                                                <p class="mt-2 mb-1"><b>{{ $allReport->title }}</b></p>
-                                                <p>{{ $allReport->subtitle }}</p>
+                                        </a>
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-11">
+                                            <div class="horizontal-menu mt-3">
+                                                <nav>
+                                                    <ul id="nav_menu">
+                                                        <li><i class="far fa-building"></i><span class="mr-3">Tindak
+                                                                Lanjut
+                                                                {{ \App\Model\ReportAction::where('id_report', $allReport->id)->count() }}</span>
+                                                        </li>
+                                                        <li><i class="far fa-comments"></i> <span>Komentar
+                                                                {{ \App\Model\ReportComment::where('id_report', $allReport->id)->count() }}</span>
+                                                        </li>
+                                                        <li>
+                                                            <div id="supporthtml{{ $allReport->id }}">
+                                                                <a href="javascript:void();" class="support"
+                                                                    data-id="{{ $allReport->id }}">
+
+                                                                    @if (\App\Model\ReportSupport::where('id_user',
+                                                                    Auth::user()->id)->where('id_report',
+                                                                    $allReport->id)->first() == null)
+                                                                    <i class="far fa-thumbs-up"></i>
+                                                                    @else
+                                                                    <i class="fas fa-thumbs-up"></i>
+                                                                    @endif
+
+                                                                    <span>Dukung
+                                                                        {{ \App\Model\ReportSupport::where('id_report', $allReport->id)->count() }}</span>
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
                                             </div>
                                         </div>
                                     </div>
@@ -50,29 +94,35 @@ active
                                 <hr>
                                 @endforeach
                             </div>
-                            
-                            <div class="tab-pane fade show" id="laporanku" role="tabpanel" aria-labelledby="laporanku-tab">
+                            <div class="tab-pane fade show" id="laporanku" role="tabpanel"
+                                aria-labelledby="laporanku-tab">
                                 @foreach ($myReports as $myReport)
-                            <a href="{{ route('indexReportDetailUser', $myReport->id) }}">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-1">
-                                                <img class="avatar user-thumb" src="{{url('assets/images/author/avatar.png')}}" alt="avatar">
-                                            </div>
-                                            <div class="col-md-11">
-                                                <p><b>{{ \App\User::where('id', $myReport->id_user)->first()->username }}</b></p>
-                                                <p>{{ \App\Model\Instance::where('id', $myReport->id_instance)->first()->name }}</p>
-                                                <p class="mt-2 mb-1"><b>{{ $myReport->title }}</b></p>
-                                                <p>{{ $myReport->subtitle }}</p>
+                                <a href="{{ route('indexReportDetailUser', $myReport->id) }}">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <img class="avatar user-thumb"
+                                                        src="{{url('assets/images/author/avatar.png')}}" alt="avatar">
+                                                </div>
+                                                <div class="col-md-11">
+                                                    <p><b>{{ \App\User::where('id', $myReport->id_user)->first()->username }}</b>
+                                                    </p>
+                                                    <p>{{ \App\Model\Instance::where('id', $myReport->id_instance)->first()->name }}
+                                                    </p>
+                                                    <p class="mt-2 mb-1"><b>{{ $myReport->title }} 
+                                                        @if ($myReport->status == "Done")
+                                                        <span class="badge badge-pill badge-success">Selesai</span>
+                                                        @endif</b></p>
+                                                    <p>{{ $myReport->subtitle }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr>
-                                @endforeach
+                                    <hr>
+                                    @endforeach
                             </div>
-                        </a>
+                            </a>
                             {{-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             </div>
                             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -111,4 +161,36 @@ active
     </div>
 </div>
 
+@endsection
+@section('script')
+<script>
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.support').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            console.log(id);
+            $.ajax({
+                url: "{{ url('user/support' ) }}" + '/' + id,
+                type: "GET",
+                dataType: "json",
+
+                success: function (data) {
+                    $('#supporthtml' + id).html(
+                        '<a href="javascript:void();" class="support" data-id="{{ $allReport->id }}">  <i class="fas fa-thumbs-up"></i> <span>Dukung '+data+'</span> </a>'
+                    )
+                },
+                error: function (data) {
+                    console.log(data);
+                },
+            });
+
+        })
+    })
+
+</script>
 @endsection

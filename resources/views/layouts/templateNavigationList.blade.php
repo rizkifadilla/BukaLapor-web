@@ -10,15 +10,15 @@
 menu biasa
 <li><a href="maps.html"><i class="ti-map-alt"></i> <span>maps</span></a></li> --}}
 @section('templateNavigationList')
-    <li class="@yield('activeHome')"><a href="#"><i class="ti-map-alt"></i> <span>Home</span></a></li>
+    <li class="@yield('activeHome')"><a href="home"><i class="fas fa-home"></i> <span>Home</span></a></li>
 
     @if ( Auth::user()->role == 'Admin' )
-        <li class="@yield('activeAddInstance')"><a href="{{ route('indexAddedInstance') }}"><i class="ti-map-alt"></i> <span>Tambah Instansi</span></a></li>
-        <li class="@yield('activeReportVerification')"><a href="{{ route('indexReportVerification') }}"><i class="ti-map-alt"></i> <span>Verifikasi Laporan</span></a></li>
+        <li class="@yield('activeAddInstance')"><a href="{{ route('indexAddedInstance') }}"><i class="fas fa-user-plus"></i> <span>Tambah Instansi</span></a></li>
+        <li class="@yield('activeReportVerification')"><a href="{{ route('indexReportVerification') }}"><i class="far fa-check-square"></i> <span>Verifikasi Laporan</span></a></li>
 
     @elseif( Auth::user()->role == 'Instance' )
-        <li class="@yield('activeIntanceData')"><a href="{{ route('indexInstanceData') }}"><i class="ti-map-alt"></i> <span>Data Instansi</span></a></li>
-        <li class="@yield('activeReportData')"><a href="{{ route('indexReportData') }}"><i class="ti-map-alt"></i> <span>Laporan</span></a></li>
+        <li class="@yield('activeIntanceData')"><a href="{{ route('indexInstanceData') }}"><i class="far fa-building"></i> <span>Data Instansi</span></a></li>
+        <li class="@yield('activeReportData')"><a href="{{ route('indexReportData') }}"><i class="far fa-file-alt"></i> <span>Laporan</span></a></li>
 
     {{-- @elseif( Auth::user()->role == 'User' )
         <li class="@yield('activeReportForm')"><a href="{{ route('indexReportForm') }}"><i class="ti-map-alt"></i> <span>Laporkan</span></a></li> --}}

@@ -13,6 +13,9 @@ use App\Model\ReportAction;
 use App\Model\ReportComment;
 use App\Model\ReportSupport;
 use Auth,Storage,File,DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use App\Exports\RekapLaporan;
 
 class UserController extends Controller
 {
@@ -120,5 +123,27 @@ class UserController extends Controller
               ->delete();
 
         return redirect()->route('indexReportDetailUser', [$id_report]);
+    }
+    public function support($id)
+    {
+        $cek = ReportSupport::where('id_user',Auth::user()->id)->where('id_report',$id)->first();
+        if($cek == null){
+            $support = new ReportSupport;
+            $support->id_user = Auth::user()->id;
+            $support->id_report = $id;
+            $support->save();
+        }else{
+            DB::table('report_supports')
+              ->where('id_user', Auth::user()->id)
+              ->where('id_report', $id)
+              ->delete();
+        }
+        $data = ReportSupport::where('id_report', $id)->count();
+
+        return response()->json($data);
+    }
+    public function export()
+    {
+        return Excel::download(new RekapLaporan, 'Data Laporan.xlsx');
     }
 }

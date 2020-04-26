@@ -53,7 +53,13 @@ Route::prefix('user')->group(function (){
     Route::get('delete-comment/{id}/{id_report}','UserController@delete_comment')->name('deleteComment');
     Route::post('response-user', 'UserController@response_user')->name('responseUser');
     Route::get('delete-response-user/{id}/{id_report}','UserController@delete_response_user')->name('deleteResponseUser');
+    Route::get('support/{id}','UserController@support')->name('support');
+    Route::get('export','UserController@export')->name('export');
 
+});
+Route::prefix('api')->group(function (){
+    Route::get('report-api','BukaLaporApiController@report_api')->name('reportApi');
+    Route::post('create-report-api','BukaLaporApiController@create_report_api')->name('createReportApi');
 });
 Route::get('auth/google', 'Auth\Socialite\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\Socialite\GoogleController@handleGoogleCallback');

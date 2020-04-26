@@ -26,8 +26,10 @@ $no = 1;
                             @if ($report->id_user == Auth::user()->id)
                             @if ($report->status != "Done")
                             <div class="float-right">
+                                @if ( $report->status != "Waiting")
                                 <a href="{{ route('doneReportUser', $report->id) }}" class="btn btn-success">Laporan
                                     Selesai</a>
+                                @endif
                                 <a href="{{ route('deleteReport', $report->id) }}" class="btn btn-danger">Hapus
                                     Laporan</a>
                             </div>
@@ -41,6 +43,7 @@ $no = 1;
                             @endforeach
                             @endif
                         </div>
+                        @if ($report->status != "Waiting")
                         <ul class="nav nav-tabs m-3" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
@@ -160,6 +163,7 @@ $no = 1;
                                 </form>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
