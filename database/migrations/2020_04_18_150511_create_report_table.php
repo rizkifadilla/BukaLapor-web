@@ -17,15 +17,15 @@ class CreateReportTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_instance');
-            $table->unsignedBigInteger('id_instance_units');
+            $table->unsignedBigInteger('id_instance_unit')->nullable();
             $table->string('title');
             $table->text('subtitle');
             $table->string('seen')->nullable();
             $table->enum('status', array('Waiting', 'Verified', 'Not Verified', 'Process', 'Done'))->default('Waiting');
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_intance')->references('id')->on('instances')->onDelete('cascade');
-            $table->foreign('id_intance_units')->references('id')->on('instance_units')->onDelete('cascade');
+            $table->foreign('id_instance')->references('id')->on('instances')->onDelete('cascade');
+            $table->foreign('id_instance_unit')->references('id')->on('instance_units')->onDelete('cascade');
             $table->timestamps();
         });
     }

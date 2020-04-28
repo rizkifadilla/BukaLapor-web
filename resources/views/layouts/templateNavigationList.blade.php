@@ -19,6 +19,7 @@ menu biasa
     @elseif( Auth::user()->role == 'Instance' )
         <li class="@yield('activeIntanceData')"><a href="{{ route('indexInstanceData') }}"><i class="far fa-building"></i> <span>Data Instansi</span></a></li>
         <li class="@yield('activeReportData')"><a href="{{ route('indexReportData') }}"><i class="far fa-file-alt"></i> <span>Laporan</span></a></li>
+        <li class="@yield('activeReportDone')"><a href="{{ route('indexReportDone') }}"><i class="far fa-file-alt"></i> <span>Laporan Selesai</span></a></li>
 
     {{-- @elseif( Auth::user()->role == 'User' )
         <li class="@yield('activeReportForm')"><a href="{{ route('indexReportForm') }}"><i class="ti-map-alt"></i> <span>Laporkan</span></a></li> --}}

@@ -19,6 +19,9 @@ class CreateInstanceTypesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+        DB::table('instance_types')->insert([
+            ['index' => '1','name' => 'Negeri'],
+        ]);
     }
 
     /**

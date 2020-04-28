@@ -19,6 +19,9 @@ class CreateInstanceServicesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+        DB::table('instance_services')->insert([
+            ['index' => '1.1','name' => 'Pelayanan Masyarakat'],
+        ]);
     }
 
     /**

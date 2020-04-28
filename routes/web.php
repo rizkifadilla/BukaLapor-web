@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -41,6 +41,8 @@ Route::prefix('instance')->group(function (){
     Route::get('report-details-instance/{id}','InstanceController@report_details_instance')->name('reportDetailsInstance');
     Route::post('response','InstanceController@response')->name('response');
     Route::get('delete-response/{id}/{id_report}','InstanceController@delete_response')->name('deleteResponse');
+    Route::get('report-done','InstanceController@report_done')->name('indexReportDone');
+    Route::get('export','UserController@export')->name('export');
 });
 Route::prefix('user')->group(function (){
     Route::get('report-form','UserController@report_form')->name('indexReportForm');
@@ -54,7 +56,7 @@ Route::prefix('user')->group(function (){
     Route::post('response-user', 'UserController@response_user')->name('responseUser');
     Route::get('delete-response-user/{id}/{id_report}','UserController@delete_response_user')->name('deleteResponseUser');
     Route::get('support/{id}','UserController@support')->name('support');
-    Route::get('export','UserController@export')->name('export');
+    Route::get('notif/{id}/{id_report}','UserController@notif')->name('notif');
 
 });
 Route::prefix('api')->group(function (){

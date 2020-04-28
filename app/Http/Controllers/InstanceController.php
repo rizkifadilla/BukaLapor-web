@@ -12,7 +12,11 @@ use App\Model\ReportFile;
 use App\Model\ReportAction;
 use App\Model\ReportComment;
 use App\Model\ReportSupport;
+use App\Model\Notification;
 use Auth,Storage,File,DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
+use App\Exports\RekapLaporan;
 
 class InstanceController extends Controller
 {
@@ -67,6 +71,15 @@ class InstanceController extends Controller
         $message->id_report = $id_report;
         $message->content = $request->post('message');
         $message->save();
+
+        $notif = new Notification;
+        $notif->id_user = Report::where('id', $id_report)->first()->id_user;
+        $notif->id_admin = Auth::user()->id;
+        $notif->id_report = $id_report;
+        $notif->id_report_action = $message->id;
+        $notif->status = "New";
+        $notif->save();
+
         DB::table('reports')
               ->where('id', $id_report)
               ->update(['status' => "Process"]);
@@ -80,5 +93,15 @@ class InstanceController extends Controller
               ->delete();
         
         return redirect()->route('reportDetailsInstance',[$id_report]);
+    }
+    public function report_done()
+    {
+        $reports = Report::where('status',"Verified")->orWhere('status',"Done")->get();
+
+        return view('instance/reportDone', compact('reports'));
+    }
+    public function export()
+    {
+        return Excel::download(new RekapLaporan, 'Data Laporan.xlsx');
     }
 }

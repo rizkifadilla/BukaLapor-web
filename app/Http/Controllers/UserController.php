@@ -12,6 +12,7 @@ use App\Model\ReportFile;
 use App\Model\ReportAction;
 use App\Model\ReportComment;
 use App\Model\ReportSupport;
+use App\Model\Notification;
 use Auth,Storage,File,DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
@@ -22,7 +23,10 @@ class UserController extends Controller
     public function report_form()
     {
         $categorys = InstanceService::all();
-        return view('user/homeUser', compact('categorys'));
+        $notifys = Notification::where('id_user', Auth::user()->id)->get();
+        $notifyCount = Notification::where('id_user', Auth::user()->id)->where('status', "New")->count();
+
+        return view('user/homeUser', compact('categorys','notifys','notifyCount'));
     }
     public function addedReportData(Request $request)
     {
@@ -53,8 +57,10 @@ class UserController extends Controller
     {
         $allReports = Report::all();
         $myReports = Report::where('id_user', Auth::user()->id)->get();
+        $notifys = Notification::where('id_user', Auth::user()->id)->get();
+        $notifyCount = Notification::where('id_user', Auth::user()->id)->where('status', "New")->count();
 
-        return view('user.myReport', compact('allReports','myReports'));
+        return view('user.myReport', compact('allReports','myReports','notifys','notifyCount'));
     }
     public function report_detail_user($id)
     {
@@ -63,8 +69,10 @@ class UserController extends Controller
         $actions = ReportAction::where('id_report', $id)->get();
         $comments = ReportComment::where('id_report', $id)->get();
         $supports = ReportSupport::where('id_report', $id)->get();
+        $notifys = Notification::where('id_user', Auth::user()->id)->get();
+        $notifyCount = Notification::where('id_user', Auth::user()->id)->where('status', "New")->count();
 
-        return view('user/reportDetail', compact('report','files','actions','comments','supports'));
+        return view('user/reportDetail', compact('report','files','actions','comments','supports','notifys','notifyCount'));
     }
     public function addedReportComment(Request $request)
     {
@@ -110,9 +118,6 @@ class UserController extends Controller
         $message->id_report = $id_report;
         $message->content = $request->post('message');
         $message->save();
-        DB::table('reports')
-              ->where('id', $id_report)
-              ->update(['status' => "Process"]);
         
         return redirect()->route('indexReportDetailUser', [$id_report]);
     }
@@ -142,8 +147,12 @@ class UserController extends Controller
 
         return response()->json($data);
     }
-    public function export()
+    public function notif($id, $id_report)
     {
-        return Excel::download(new RekapLaporan, 'Data Laporan.xlsx');
+        DB::table('notifications')
+              ->where('id', $id)
+              ->update(['status' => "Read"]);
+
+        return redirect()->route('indexReportDetailUser', [$id_report]);
     }
 }

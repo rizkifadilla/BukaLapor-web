@@ -12,6 +12,7 @@ use App\User;
 use App\Model\Report;
 use App\Model\ReportFile;
 use Auth,Storage,File,DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {

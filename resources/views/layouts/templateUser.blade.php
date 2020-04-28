@@ -56,6 +56,34 @@
                             <ul class="notification-area">
                                 <li id="full-view"><i class="ti-fullscreen"></i></li>
                                 <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
+                                <li class="dropdown">
+                                    <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
+                                        
+                                        <span>@if (isset($notifyCount)){{ $notifyCount }}@endif</span>
+                                        
+                                    </i>
+                                    <div class="dropdown-menu bell-notify-box notify-box">
+                                        <span class="notify-title">You have @if (isset($notifyCount)){{ $notifyCount }}@endif new notifications <a
+                                                href="#">view
+                                                all</a></span>
+                                        @if (isset($notifys))
+                                        <div class="nofity-list m-0">
+                                            @foreach ($notifys as $notify)
+                                            <a href="{{ route('notif', ['id' => $notify->id, 'id_report' => $notify->id_report]) }}"
+                                                class="notify-item @if($notify->status == "Read") bg-light @endif">
+                                                <div class="notify-thumb mt-2"><i
+                                                        class="ti-comments-smiley btn-info"></i></div>
+                                                <div class="notify-text">
+                                                    <p class="mt-2">Pesan Anda telah ditindak lanjuti</p>
+                                                    <span>Oleh
+                                                        {{ \App\user::where('id', $notify->id_admin)->first()->username }}</span>
+                                                </div>
+                                            </a>
+                                            @endforeach
+                                        </div>
+                                        @endif
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         <div class="clearfix d-md-inline-block d-block">

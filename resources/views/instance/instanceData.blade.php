@@ -54,12 +54,12 @@ active
                             <label class="col-form-label mt-2">Kota/Kabupaten</label>
                             <select class="custom-select" id="districtSelect" name="district" required>
                                 <option selected="selected" disabled>Pilih Kota/Kabupaten</option>
-                                <option value="1">One</option>
+                                <option>Silahkan isi provinsi</option>
                             </select>
                             <label class="col-form-label mt-2">Kecamatan</label>
                             <select class="custom-select" id="subDistrictSelect" name="subDistrict" required>
                                 <option selected="selected" disabled>Pilih Kecamatan</option>
-                                <option value="1">One</option>
+                                <option>Silahkan isi Kota/Kabupaten</option>
                             </select>
                             <label for="example-text-input" class="col-form-label mt-2">Alamat</label>
                             <input class="form-control" type="text" id="example-text-input" name="address" required>

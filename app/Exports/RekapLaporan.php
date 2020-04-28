@@ -15,6 +15,7 @@ class RekapLaporan implements FromCollection
     public function collection()
     {
         $id_instance = Instance::where('id_user', Auth::user()->id)->first()->id;
-        return Report::where('id_instance', $id_instance)->get();
+        
+        return Report::where('id_instance', $id_instance)->where('status', 'Done')->get();
     }
 }

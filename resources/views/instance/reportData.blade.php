@@ -25,7 +25,6 @@ active
 <div class="row">
     <div class="col-md-12 mt-5">
         <x-card header="Data Verifikasi Laporan">
-            <a href="{{ route('export') }}" class="btn btn-success float-right mb-1" target="_BLANK">Eksport data</a>
             <div class="data-tables">
                 <table id="dataTable" class="text-center">
                     <thead class="bg-light text-capitalize">
