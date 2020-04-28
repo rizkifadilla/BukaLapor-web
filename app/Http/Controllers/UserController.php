@@ -23,7 +23,7 @@ class UserController extends Controller
     public function report_form()
     {
         $categorys = InstanceService::all();
-        $notifys = Notification::where('id_user', Auth::user()->id)->get();
+        $notifys = Notification::where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->get();
         $notifyCount = Notification::where('id_user', Auth::user()->id)->where('status', "New")->count();
 
         return view('user/homeUser', compact('categorys','notifys','notifyCount'));
@@ -57,7 +57,7 @@ class UserController extends Controller
     {
         $allReports = Report::all();
         $myReports = Report::where('id_user', Auth::user()->id)->get();
-        $notifys = Notification::where('id_user', Auth::user()->id)->get();
+        $notifys = Notification::where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->get();;
         $notifyCount = Notification::where('id_user', Auth::user()->id)->where('status', "New")->count();
 
         return view('user.myReport', compact('allReports','myReports','notifys','notifyCount'));
@@ -69,7 +69,7 @@ class UserController extends Controller
         $actions = ReportAction::where('id_report', $id)->get();
         $comments = ReportComment::where('id_report', $id)->get();
         $supports = ReportSupport::where('id_report', $id)->get();
-        $notifys = Notification::where('id_user', Auth::user()->id)->get();
+        $notifys = Notification::where('id_user', Auth::user()->id)->orderBy('created_at', 'desc')->get();;
         $notifyCount = Notification::where('id_user', Auth::user()->id)->where('status', "New")->count();
 
         return view('user/reportDetail', compact('report','files','actions','comments','supports','notifys','notifyCount'));
